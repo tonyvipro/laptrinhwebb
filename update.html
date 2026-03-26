@@ -1,1 +1,200 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Cập Nhật - Lập trình web 2</title>
+    <style>
+        /* --- CSS DÙNG CHUNG --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        .browser-mockup {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            border: 1px solid #999;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            border-bottom: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #000;
+            margin: 0 5px;
+        }
+
+        /* --- PHẦN FORM CẬP NHẬT --- */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .update-container {
+            border: 1px solid #444;
+            padding: 30px 40px;
+            width: 500px;
+        }
+
+        .update-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            width: 120px;
+            font-size: 14px;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 6px;
+            border: 1px solid #777;
+            outline: none;
+            background-color: #fff;
+        }
+
+        /* Chế độ chỉ đọc cho Username nếu không cho phép đổi */
+        .form-row input[readonly] {
+            background-color: #eee;
+            cursor: not-allowed;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            font-size: 13px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .btn-update {
+            background-color: #0056b3;
+            color: white;
+            border: 1px solid #004494;
+            padding: 8px 25px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-update:hover {
+            background-color: #004494;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="browser-mockup">
+        <header>
+            <nav>
+                <a href="#">Home</a> | 
+                <a href="login.html">Đăng nhập</a> | 
+                <a href="register.html">Đăng ký</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="update-container">
+                <h2>Màn hình cập nhật</h2>
+                
+                <form id="updateForm">
+                    <div class="form-row">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" value="admin_user" readonly>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" id="password" value="123456">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="re-password">Nhập lại mật khẩu</label>
+                        <input type="password" id="re-password" value="123456">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="admin@example.com">
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="#" class="back-link">Quay lại</a>
+                        <button type="submit" class="btn-update">Cập nhật</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            Lập trình web @01/2024
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const pass = document.getElementById('password').value;
+            const rePass = document.getElementById('re-password').value;
+
+            if (pass !== rePass) {
+                alert("Mật khẩu xác nhận không trùng khớp!");
+                return;
+            }
+
+            // Giả lập thông báo thành công
+            alert("Thông tin đã được cập nhật thành công!");
+            console.log("Dữ liệu mới:", {
+                email: document.getElementById('email').value,
+                pass: pass
+            });
+        });
+    </script>
+
+</body>
+</html>
