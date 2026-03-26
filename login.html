@@ -1,1 +1,200 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Nhập - Lập trình web 2</title>
+    <style>
+        /* --- CSS PHẦN GIAO DIỆN --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        /* Khung bao ngoài giả lập trình duyệt */
+        .browser-mockup {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            border: 1px solid #999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Thanh Menu trên cùng */
+        header {
+            border-bottom: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: #000;
+            margin: 0 5px;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Phần thân chứa form */
+        main {
+            padding: 60px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-container {
+            border: 1px solid #444;
+            padding: 40px;
+            width: 450px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Các hàng nhập liệu */
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-row label {
+            width: 100px;
+            font-size: 14px;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="password"] {
+            flex: 1;
+            padding: 6px;
+            border: 1px solid #777;
+            outline: none;
+        }
+
+        /* Checkbox ghi nhớ */
+        .remember-row {
+            margin-left: 100px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Hàng dưới cùng: Quên mật khẩu & Nút bấm */
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .forgot-link {
+            font-size: 13px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .btn-submit {
+            background-color: #0056b3;
+            color: white;
+            border: 1px solid #004494;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-submit:hover {
+            background-color: #004494;
+        }
+
+        /* Footer dưới cùng */
+        footer {
+            border-top: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="browser-mockup">
+        <header>
+            <nav>
+                <a href="#">Home</a> | 
+                <a href="#"><strong>Đăng nhập</strong></a> | 
+                <a href="#">Đăng ký</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="login-container">
+                <h2>Màn hình đăng nhập</h2>
+                
+                <form id="loginForm">
+                    <div class="form-row">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="password">Mật khẩu</label>
+                        <input type="password" id="password" required>
+                    </div>
+
+                    <div class="remember-row">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Ghi nhớ đăng nhập</label>
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="#" class="forgot-link">Quên mật khẩu</a>
+                        <button type="submit" class="btn-submit">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            Lập trình web @01/2024
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn trang web tải lại khi nhấn submit
+
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            if(user === "admin" && pass === "123456") {
+                alert("Đăng nhập thành công! Chào mừng " + user);
+            } else {
+                alert("Sai tài khoản hoặc mật khẩu. Thử lại nhé! (Gợi ý: admin/123456)");
+            }
+
+            console.log("Dữ liệu gửi đi:", { user, pass, remember });
+        });
+    </script>
+
+</body>
+</html>
