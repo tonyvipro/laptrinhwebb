@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách người dùng - Lập trình web 2</title>
+    <title>Chi tiết người dùng - Lập trình web 2</title>
     <style>
         /* --- CSS DÙNG CHUNG --- */
         * {
@@ -18,15 +17,15 @@
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
-            padding-top: 20px;
+            padding-top: 30px;
         }
 
         .browser-mockup {
-            width: 85%;
-            max-width: 1000px;
+            width: 80%;
+            max-width: 900px;
             background-color: #fff;
             border: 1px solid #999;
-            min-height: 700px;
+            min-height: 550px;
             display: flex;
             flex-direction: column;
         }
@@ -44,84 +43,62 @@
             margin: 0 5px;
         }
 
-        /* --- PHẦN BẢNG DANH SÁCH --- */
+        /* --- PHẦN NỘI DUNG CHI TIẾT --- */
         main {
             flex: 1;
-            padding: 40px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            padding: 40px 0;
         }
 
-        h2 {
-            margin-bottom: 30px;
+        .view-container {
+            border: 1px solid #444;
+            padding: 40px;
+            width: 450px;
+            background-color: #fff;
+        }
+
+        .view-container h2 {
+            text-align: center;
+            margin-bottom: 35px;
             font-weight: 500;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-
-        table, th, td {
-            border: 1px solid #333;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #f9f9f9;
-        }
-
-        .actions a {
-            color: #333;
-            text-decoration: none;
-            font-size: 13px;
-        }
-
-        .actions a:hover {
-            text-decoration: underline;
-            color: #0066cc;
-        }
-
-        /* --- PHÂN TRANG (PAGINATION) --- */
-        .pagination {
+        .info-row {
             display: flex;
-            list-style: none;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
-        .pagination li {
-            border-right: 1px solid #ddd;
+        .info-label {
+            width: 120px;
+            font-weight: normal;
         }
 
-        .pagination li:last-child {
-            border-right: none;
+        .info-value {
+            flex: 1;
+            font-weight: bold; /* Làm nổi bật dữ liệu người dùng */
         }
 
-        .pagination a {
-            display: block;
-            padding: 8px 12px;
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        .btn-edit {
+            background-color: #0056b3;
+            color: white;
+            border: 1px solid #004494;
+            padding: 8px 20px;
             text-decoration: none;
-            color: #007bff;
             font-size: 14px;
+            cursor: pointer;
         }
 
-        .pagination a:hover {
-            background-color: #eee;
-        }
-
-        .pagination .active a {
-            background-color: #fff;
-            color: #999;
-            cursor: default;
+        .btn-edit:hover {
+            background-color: #004494;
         }
 
         /* --- FOOTER --- */
@@ -138,65 +115,35 @@
     <div class="browser-mockup">
         <header>
             <nav>
-                <a href="#">Home</a> | 
+                <a href="list.html">Home</a> | 
                 <a href="login.html">Đăng xuất</a>
             </nav>
         </header>
 
         <main>
-            <h2>Danh sách user</h2>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 50px;">#</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th style="width: 200px;">Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody id="userTableBody">
-                    <tr>
-                        <td>1</td>
-                        <td>UPVH</td>
-                        <td>ATJW@gmail.com</td>
-                        <td class="actions">
-                            <a href="update.html">Edit</a> | <a href="#">View</a> | <a href="#" onclick="deleteUser(1)">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>IFUK</td>
-                        <td>KULB@gmail.com</td>
-                        <td class="actions">
-                            <a href="update.html">Edit</a> | <a href="#">View</a> | <a href="#" onclick="deleteUser(2)">Delete</a>
-                        </td>
-                    </tr>
-                    </tbody>
-            </table>
+            <div class="view-container">
+                <h2>Màn hình chi tiết</h2>
+                
+                <div class="info-row">
+                    <div class="info-label">Username</div>
+                    <div class="info-value">test1</div>
+                </div>
 
-            <ul class="pagination">
-                <li><a href="#">Previous</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
+                <div class="info-row">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">test1@gmail.com</div>
+                </div>
+
+                <div class="form-footer">
+                    <a href="update.html" class="btn-edit">Chỉnh sửa</a>
+                </div>
+            </div>
         </main>
 
         <footer>
             Lập trình web @01/2024
         </footer>
     </div>
-
-    <script>
-        function deleteUser(id) {
-            if(confirm("Bạn có chắc chắn muốn xóa user này không?")) {
-                alert("Đã xóa user ID: " + id);
-                // Thực tế sẽ gọi API xóa ở đây
-            }
-        }
-    </script>
 
 </body>
 </html>
